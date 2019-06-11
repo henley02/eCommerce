@@ -1,2 +1,2 @@
 仿京东商城B2C项目
-![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
+![Image text](https://github.com/henley02/eCommerce/blob/master/readme/img49.jpg)
