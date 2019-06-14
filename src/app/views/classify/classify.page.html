@@ -1,9 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>classify</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-xc-search-header></app-xc-search-header>
 <ion-content>
-
+    <div class="cate_content">
+        <div class="cate_left">
+            <ion-list lines="full">
+                <ion-item *ngFor="let cate of cateList">
+                    <ion-label> {{ cate.title }}</ion-label>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div class="cate-right">
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="6" *ngFor="let good of goodList">
+                        <img [src]="good.pic"/>
+                        <p>{{ good.title }}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
 </ion-content>

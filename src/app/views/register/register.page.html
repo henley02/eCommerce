@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+        <app-xc-back-button></app-xc-back-button>
+        <ion-title>注册</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list lines="full">
+        <ion-item>
+            <ion-input placeholder="请输入手机号码" type="tel" maxlength="11"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="请输入验证码" slot="start" maxlength="6"></ion-input>
+            <ion-button slot="end" (click)="sendVerifyCode()" *ngIf="!isSend" size="small" color="danger">发送验证码
+            </ion-button>
+            <ion-button slot="end" *ngIf="isSend" size="small" color="dark">{{ countdown }}s后重新获取</ion-button>
+        </ion-item>
+    </ion-list>
+
+    <ion-button (click)="nextStep(2)" expand="block" class="jd_btn">注&nbsp;&nbsp;册</ion-button>
+</ion-content>

@@ -10,14 +10,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    entryComponents: [],
+    imports: [BrowserModule, IonicModule.forRoot(
+        {
+            mode: 'ios', // 配置android、ios使用统一的样式
+            backButtonText: '' // 配置返回按钮的文案,
+        }
+    ), AppRoutingModule],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

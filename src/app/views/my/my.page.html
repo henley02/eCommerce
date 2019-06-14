@@ -1,9 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>my</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+    <div class="user_top">
+        <ng-container *ngIf="isLogin">
+            <div class="user_left">
+                <img src="/assets/images/recommend/01.jpg" alt="">
+            </div>
+            <div class="user_right">
+                <h4>用户名：张三</h4>
+                <p>普通会员</p>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="!isLogin">
+            <div class="user_left">
+                <img src="/assets/images/user.png" alt="">
+            </div>
+            <div class="user_right">
+                <p (click)="openLoginModel()">登录/注册<ion-icon name="arrow-forward" slot="start"></ion-icon></p>
+            </div>
+        </ng-container>
+    </div>
+    <ion-list lines="none">
+        <ion-item class="user-item">
+            <ion-icon name="star" color="danger" slot="start"></ion-icon>
+            <ion-label>1231321</ion-label>
+        </ion-item>
+        <ion-item-divider></ion-item-divider>
+        <ion-item class="user-item">
+            <ion-icon name="star" color="danger" slot="start"></ion-icon>
+            <ion-label>1231321</ion-label>
+        </ion-item>
+        <ion-item-divider></ion-item-divider>
+        <ion-item class="user-item">
+            <ion-icon name="star" color="danger" slot="start"></ion-icon>
+            <ion-label>1231321</ion-label>
+        </ion-item>
+        <ion-item-divider></ion-item-divider>
+    </ion-list>
 </ion-content>

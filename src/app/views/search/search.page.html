@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-toolbar>
+        <app-xc-back-button></app-xc-back-button>
+        <ion-searchbar placeholder="输入内容" animated></ion-searchbar>
+        <ion-buttons slot="end">
+            <ion-button color="dark" (click)="doSearch()">搜索</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar *ngIf="!flag" class="sub_toolbar">
+        <div class="subheader">
+            <div>综合</div>
+            <div>销量</div>
+            <div>价格</div>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="search_content" *ngIf="flag" padding="">
+        <div class="hot_list">
+            <h3 class="search_title">热搜</h3>
+            <div>
+                <span>女装</span>
+                <span>男装</span>
+                <span>家具</span>
+                <span>家具家具家具家具家具家具家具</span>
+                <span>化妆品</span>
+                <span>化妆品</span>
+                <span>女装</span>
+                <span>男装</span>
+                <span>家具</span>
+                <span>化妆品</span>
+                <span>化妆品</span><span>女装</span>
+                <span>男装</span>
+                <span>家具</span>
+                <span>化妆品</span>
+                <span>化妆品</span>
+            </div>
+        </div>
+        <div class="history">
+            <h3 class="search_title">历史搜索</h3>
+            <ion-list lines="full">
+                <ion-item>男装</ion-item>
+                <ion-item>男装</ion-item>
+                <ion-item>男装</ion-item>
+                <ion-item>男装</ion-item>
+                <ion-item>男装</ion-item>
+                <ion-item>男装</ion-item>
+                <ion-item>男装</ion-item>
+                <ion-item>男装</ion-item>
+                <ion-item>男装</ion-item>
+            </ion-list>
+        </div>
+    </div>
+    <div class="good_content" *ngIf="!flag">
+        <ion-list>
+            <ion-item *ngFor="let good of goodList">
+                <ion-thumbnail slot="start">
+                    <img [src]="good.pic"/>
+                </ion-thumbnail>
+                <ion-label>
+                    <h3 class="title">{{ good.title }}</h3>
+                    <p>价格：<span class="price">¥{{ good.price }}</span></p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

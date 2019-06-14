@@ -1,9 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cart</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>cart</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <dl class="cart_item" *ngFor="let good of goodList">
+        <dt>
+            <ion-checkbox color="danger"></ion-checkbox>
+            <div class="img">
+                <img [src]="good.pic" alt="">
+            </div>
+        </dt>
+        <dd>
+            <h2 class="cart_title">{{ good.title }}</h2>
+            <div class="cart_info">
+                <div class="cart_price price">{{ good.price }}元</div>
+                <div class="cart_num">
+                    <div class="input_left">-</div>
+                    <div class="input_center">
+                        <input type="text" readonly [(ngModel)]="good.num" name="num"/>
+                    </div>
+                    <div class="input_right">+</div>
+                </div>
+            </div>
+        </dd>
+    </dl>
 
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons slot="start" class="checkout_info">
+            <ion-checkbox></ion-checkbox>全选
+            <strong>合计：<span class="price">¥12313</span></strong>
+        </ion-buttons>
+        <ion-buttons slot="end" class="checkout_btn">
+            <ion-button color="danger" fill="solid">去结算</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

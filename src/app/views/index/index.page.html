@@ -1,9 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>index</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-xc-search-header></app-xc-search-header>
 <ion-content>
-
+    <ion-slides [options]="slideOptions" pager="true">
+        <ion-slide *ngFor="let slide of list">
+            <img [src]="slide.pic"/>
+        </ion-slide>
+    </ion-slides>
+    <div class="h_title">猜你喜欢</div>
+    <div class="hot_list">
+        <ul class="clearfix" [ngStyle]="{width:recommendList.length* 9+'rem'}">
+            <li *ngFor="let item of recommendList">
+                <img [src]="item.pic"/>
+                <p>{{ item.title }}</p>
+            </li>
+        </ul>
+    </div>
+    <div class="h_title">商品列表</div>
+    <div class="good_list">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6" *ngFor="let good of goodList">
+                    <img [src]="good.pic"/>
+                    <p>{{ good.title }}</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 </ion-content>

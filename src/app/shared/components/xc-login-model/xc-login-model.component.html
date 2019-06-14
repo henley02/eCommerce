@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-icon name="close" (click)="close()"></ion-icon>
+        <ion-title>登录</ion-title>
+        <ion-buttons slot="end">
+            <ion-button color="dark">客服</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form>
+        <ion-list class="login-list" lines="full">
+            <ion-item>
+                <ion-input placeholder="请输入用户名/邮箱" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input placeholder="请输入密码" type="password"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <span slot="start">忘记密码</span>
+                <span slot="end" (click)="goRegister()">新用户注册</span>
+            </ion-item>
+        </ion-list>
+        <ion-button color="danger" expand="block" class="jd_btn">登录</ion-button>
+    </form>
+</ion-content>

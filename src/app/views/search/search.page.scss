@@ -1,0 +1,54 @@
+.search_content {
+  .search_title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: .5rem 0;
+  }
+
+  .hot_list {
+    div {
+      padding: .5rem 0;
+
+      span {
+        display: inline-block;
+        padding: .5rem;
+        background: #eeeeee;
+        margin: .5rem;
+        border-radius: .5rem;
+      }
+    }
+  }
+
+  .history {
+    ion-item {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.sub_toolbar {
+  --min-height: 3rem;
+
+  .subheader {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #eee;
+    height: 3rem;
+
+    div {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}
+
+.good_content {
+  ion-list {
+    ion-item {
+      ion-label {
+        white-space: normal;
+      }
+    }
+  }
+}
+
