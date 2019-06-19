@@ -1,0 +1,52 @@
+ion-footer {
+  ion-toolbar {
+    --padding-bottom: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-start: 0;
+  }
+}
+
+.footer_bar {
+  display: flex;
+
+  .carticon {
+    width: 6.6rem;
+    position: relative;
+    text-align: center;
+
+    ion-icon {
+      color: #999;
+      font-size: 2.8rem;
+    }
+
+    p {
+      color: #999;
+      text-align: center;
+      font-size: 1.4rem;
+    }
+
+    ion-badge {
+      position: absolute;
+      right: .5rem;
+      top: -1px
+    }
+  }
+
+  .addcart, .buy {
+    flex: 1;
+    text-align: center;
+    height: 51px;
+    line-height: 51px;
+    color: #FFFFFF;
+  }
+
+
+  .addcart {
+    background: orange;
+  }
+
+  .buy {
+    background: red;
+  }
+}

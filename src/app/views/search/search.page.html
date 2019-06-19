@@ -1,16 +1,15 @@
 <ion-header>
     <ion-toolbar>
-        <app-xc-back-button></app-xc-back-button>
-        <ion-searchbar placeholder="输入内容" animated></ion-searchbar>
+        <app-xc-back-button slot="start"></app-xc-back-button>
+        <ion-searchbar placeholder="输入内容" animated [(ngModel)]="keywords"></ion-searchbar>
         <ion-buttons slot="end">
             <ion-button color="dark" (click)="doSearch()">搜索</ion-button>
         </ion-buttons>
     </ion-toolbar>
     <ion-toolbar *ngIf="!flag" class="sub_toolbar">
         <div class="subheader">
-            <div>综合</div>
-            <div>销量</div>
-            <div>价格</div>
+            <div *ngFor="let item of subheaderList;let i = index;" (click)="subheaderChange(i)"
+                 [ngClass]="{active:i===subheaderSelectedIndex}">{{ item.title }}</div>
         </div>
     </ion-toolbar>
 </ion-header>
@@ -37,24 +36,19 @@
                 <span>化妆品</span>
             </div>
         </div>
-        <div class="history">
+        <div class="history" *ngIf="historyList.length">
             <h3 class="search_title">历史搜索</h3>
             <ion-list lines="full">
-                <ion-item>男装</ion-item>
-                <ion-item>男装</ion-item>
-                <ion-item>男装</ion-item>
-                <ion-item>男装</ion-item>
-                <ion-item>男装</ion-item>
-                <ion-item>男装</ion-item>
-                <ion-item>男装</ion-item>
-                <ion-item>男装</ion-item>
-                <ion-item>男装</ion-item>
+                <ion-item *ngFor="let item of historyList;let i = index" (click)="historyClick(item)">
+                    <ion-label> {{  item}}</ion-label>
+                    <ion-icon name="close" color="dark" slot="end" (click)="delHistory($event,item,i)"></ion-icon>
+                </ion-item>
             </ion-list>
         </div>
     </div>
-    <div class="good_content" *ngIf="!flag">
+    <div class="good_content" [hidden]="flag">
         <ion-list>
-            <ion-item *ngFor="let good of goodList">
+            <ion-item *ngFor="let good of productList">
                 <ion-thumbnail slot="start">
                     <img [src]="good.pic"/>
                 </ion-thumbnail>
@@ -64,5 +58,11 @@
                 </ion-label>
             </ion-item>
         </ion-list>
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="getProduct()">
+            <ion-infinite-scroll-content
+                    loadingSpinner="bubbles"
+                    loadingText="加载中...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
     </div>
 </ion-content>

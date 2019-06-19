@@ -7,6 +7,21 @@
     width: 8rem;
     height: 100%;
     overflow-y: auto;
+    background: #eee;
+
+    ion-list {
+      ion-item {
+        --background: #eee;
+
+        ion-label {
+          margin: 0;
+        }
+
+        &.active {
+          --background: #fff;
+        }
+      }
+    }
   }
 
   .cate-right {

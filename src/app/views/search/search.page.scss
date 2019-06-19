@@ -38,6 +38,10 @@
     div {
       flex: 1;
       text-align: center;
+
+      &.active {
+        color: red;
+      }
     }
   }
 }

@@ -8,7 +8,7 @@
     <div class="h_title">猜你喜欢</div>
     <div class="hot_list">
         <ul class="clearfix" [ngStyle]="{width:recommendList.length* 9+'rem'}">
-            <li *ngFor="let item of recommendList">
+            <li *ngFor="let item of recommendList" routerLink="/product/detail/{{item._id}}">
                 <img [src]="item.pic"/>
                 <p>{{ item.title }}</p>
             </li>
@@ -18,9 +18,12 @@
     <div class="good_list">
         <ion-grid>
             <ion-row>
-                <ion-col size="6" *ngFor="let good of goodList">
-                    <img [src]="good.pic"/>
-                    <p>{{ good.title }}</p>
+                <ion-col size="6" *ngFor="let good of goodList" routerLink="/product/detail/{{good._id}}">
+                    <div class="plist-inner">
+                        <img [src]="good.pic"/>
+                        <div class="plist-title">{{ good.title }}</div>
+                        <p class="price">¥{{ good.price }}</p>
+                    </div>
                 </ion-col>
             </ion-row>
         </ion-grid>

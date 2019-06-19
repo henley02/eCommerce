@@ -6,6 +6,7 @@ ion-slide {
 .h_title {
   padding: 1rem .5rem;
   font-size: 1.4rem;
+  border-bottom: .05rem solid #eeeeee;
 
   &::before {
     position: relative;
@@ -19,6 +20,7 @@ ion-slide {
 }
 
 .hot_list {
+  margin-top: .5rem;
   width: 100%;
   height: 10rem;
   overflow-x: auto;
@@ -40,6 +42,24 @@ ion-slide {
     p {
       padding: .4rem;
       text-align: center;
+      height: 4rem;
+    }
+  }
+}
+
+.good_list {
+  .plist-inner {
+    border: .05rem solid #eeeeee;
+    padding: .5rem;
+
+    .plist-title {
+      position: relative;
+      //height: 3rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
   }
 }

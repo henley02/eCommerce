@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../../shared/services/common/common.service';
+import { MessageService } from '../../shared/services/message/message.service';
+import { ToastService } from '../../shared/services/toast/toast.service';
 
 @Component({
     selector: 'app-classify',
@@ -8,23 +11,30 @@ import { Component, OnInit } from '@angular/core';
 export class ClassifyPage implements OnInit {
     cateList: any = [];
     goodList: any = [];
+    pid: string;
 
-    constructor() {
-        for (let i = 0; i < 20; i++) {
-            this.cateList.push({
-                title: `分类${ i }`
-            });
-        }
-        for (let i = 1; i <= 10; i++) {
-            this.goodList.push({
-                pic: `/assets/images/goods/list${ i }.jpg`,
-                title: `第${ i }个`,
-                url: ''
-            });
-        }
+    constructor(private commonService: CommonService, private message: MessageService, private toast: ToastService) {
     }
 
     ngOnInit() {
+        this.getLeftCateData();
     }
 
+    async getLeftCateData() {
+        const res = await this.commonService.get<any>('api/pcate');
+        this.cateList = res.result;
+        this.pid = this.cateList[0]._id;
+        this.getRightCateData();
+    }
+
+    changeCate(item) {
+        this.pid = item._id;
+        this.getRightCateData();
+    }
+
+    async getRightCateData() {
+        const res = await this.commonService.get<any>('api/pcate', {pid: this.pid});
+        res.result.map((item) => item.pic = `${ this.commonService.config.domain }${ item.pic }`);
+        this.goodList = res.result;
+    }
 }

@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+        <app-xc-back-button slot="start"></app-xc-back-button>
+        <ion-segment [(ngModel)]="segmentSelected" color="danger">
+            <ion-segment-button [value]="item.value" *ngFor="let item of segmentList"
+                                [checked]="segmentSelected === item.value">
+                <ion-label>{{ item.name }}</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div [ngSwitch]="segmentSelected">
+        <div *ngSwitchCase="segmentList[0].value">商品</div>
+        <div *ngSwitchCase="segmentList[1].value">详情</div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <div class="footer_bar">
+            <div class="carticon">
+                <ion-icon slot="start" name="cart"></ion-icon>
+                <p>购物车</p>
+                <ion-badge slot="end">1</ion-badge>
+            </div>
+            <div class="addcart">加入购物车</div>
+            <div class="buy">立即购买</div>
+        </div>
+    </ion-toolbar>
+</ion-footer>

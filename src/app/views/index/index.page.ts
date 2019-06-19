@@ -1,5 +1,6 @@
 import { Component, OnInit, } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { CommonService } from '../../shared/services/common/common.service';
 
 @Component({
     selector: 'app-index',
@@ -19,31 +20,40 @@ export class IndexPage implements OnInit {
         loop: true,
     };
 
-    constructor(private nav: NavController) {
-        for (let i = 1; i <= 3; i++) {
-            this.list.push({
-                pic: `/assets/images/slide/slide0${ i }.png`,
-                url: ''
-            });
-        }
-
-        for (let i = 1; i <= 10; i++) {
-            this.recommendList.push({
-                pic: `/assets/images/recommend/${ i < 10 ? ('0' + i) : i }.jpg`,
-                title: `第${ i }个`,
-                url: ''
-            });
-        }
-        for (let i = 1; i <= 10; i++) {
-            this.goodList.push({
-                pic: `/assets/images/goods/list${ i }.jpg`,
-                title: `第${ i }个`,
-                url: ''
-            });
-        }
+    constructor(private nav: NavController, private commonService: CommonService) {
     }
 
     ngOnInit() {
+        this.getBannerList();
+        this.getHotGoodsList();
+        this.getGoodList();
     }
 
+    /**
+     * 获取轮播图列表
+     */
+    async getBannerList() {
+        const res = await this.commonService.get<any>('api/focus');
+        res.result.map((item) => item.pic = `${ this.commonService.config.domain }${ item.pic }`);
+        this.list = res.result;
+    }
+
+    /**
+     * 获取热门商品列表
+     */
+    async getHotGoodsList() {
+        const res = await this.commonService.get<any>('api/plist', {is_hot: 1});
+        res.result.map((item) => item.pic = `${ this.commonService.config.domain }${ item.pic }`);
+        this.recommendList = res.result;
+    }
+
+    /**
+     * 获取商品列表
+     */
+    async getGoodList() {
+        const res = await this.commonService.get<any>('api/plist', {is_best: 1});
+        res.result.map((item) => item.pic = `${ this.commonService.config.domain }${ item.pic }`);
+        this.goodList = res.result;
+    }
 }
+

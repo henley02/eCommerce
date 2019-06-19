@@ -3,7 +3,7 @@
     <div class="cate_content">
         <div class="cate_left">
             <ion-list lines="full">
-                <ion-item *ngFor="let cate of cateList">
+                <ion-item *ngFor="let cate of cateList" (tap)="changeCate(cate)" [ngClass]="{'active':pid == cate._id}">
                     <ion-label> {{ cate.title }}</ion-label>
                 </ion-item>
             </ion-list>
@@ -11,7 +11,7 @@
         <div class="cate-right">
             <ion-grid>
                 <ion-row>
-                    <ion-col size="6" *ngFor="let good of goodList">
+                    <ion-col size="6" *ngFor="let good of goodList" routerLink="/product/list/{{good._id}}">
                         <img [src]="good.pic"/>
                         <p>{{ good.title }}</p>
                     </ion-col>
